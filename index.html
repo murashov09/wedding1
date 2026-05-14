@@ -184,8 +184,7 @@ footer p{font-size:11px;color:var(--text-light);letter-spacing:2px}
     <div class="hero-inner">
       <p class="save-lbl">— Save the date —</p>
       <div class="photo-oval">
-        <!-- Сюда вставь ссылку на фото или удали тег img если фото нет -->
-        <img src="https://via.placeholder.com/240x310/e8f0e4/8a9e7e?text=♥" alt="Иван и Анастасия"/>
+        <img src="https://via.placeholder.com/240x310/e8f0e4/8a9e7e?text=%E2%99%A5" alt="Иван и Анастасия"/>
       </div>
       <h1 class="hero-names">Иван <span class="amp">&</span> Анастасия</h1>
       <div class="divider"><div class="dl"></div><span class="dd">✦</span><div class="dl"></div></div>
@@ -277,14 +276,14 @@ footer p{font-size:11px;color:var(--text-light);letter-spacing:2px}
     <div class="rsvp-card">
       <form id="rsvp-form">
         <div class="fg">
-          <label for="name">Ваше имя</label>
-          <input type="text" id="name" name="name" placeholder="Имя и фамилия" required/>
+          <label for="fname">Ваше имя</label>
+          <input type="text" id="fname" name="name" placeholder="Имя и фамилия" required/>
         </div>
         <div class="fg">
           <label>Вы придёте?</label>
           <div class="rg">
-            <div class="ro"><input type="radio" name="attend" id="yes" value="yes" required/><label for="yes">✓ Буду</label></div>
-            <div class="ro"><input type="radio" name="attend" id="no" value="no"/><label for="no">✗ Не смогу</label></div>
+            <div class="ro"><input type="radio" name="attend" id="r-yes" value="yes" required/><label for="r-yes">✓ Буду</label></div>
+            <div class="ro"><input type="radio" name="attend" id="r-no" value="no"/><label for="r-no">✗ Не смогу</label></div>
           </div>
         </div>
         <div class="fg">
@@ -320,19 +319,24 @@ footer p{font-size:11px;color:var(--text-light);letter-spacing:2px}
 </div>
 
 <script>
-// Конверт
-const openBtn = document.getElementById('openBtn');
-const enterBtn = document.getElementById('enterBtn');
-const envelope = document.getElementById('envelope');
-const seal = document.getElementById('seal');
-const screen = document.getElementById('envelope-screen');
-const main = document.getElementById('main');
+(function() {
+  var openBtn  = document.getElementById('openBtn');
+  var enterBtn = document.getElementById('enterBtn');
+  var envelope = document.getElementById('envelope');
+  var seal     = document.getElementById('seal');
+  var screen   = document.getElementById('envelope-screen');
+  var main     = document.getElementById('main');
 
-function openEnvelope() {
-  seal.classList.add('gone');
-  envelope.classList.add('opened');
-  openBtn.classList.add('hide');
-  setTimeout(() => enterBtn.classList.add('show'), 900);
-}
+  function openEnvelope() {
+    seal.classList.add('gone');
+    envelope.classList.add('opened');
+    openBtn.classList.add('hide');
+    setTimeout(function() {
+      enterBtn.classList.add('show');
+    }, 900);
+  }
 
-openBtn.addEventListener('click
+  openBtn.addEventListener('click', openEnvelope);
+  envelope.addEventListener('click', openEnvelope);
+
+  
